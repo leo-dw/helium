@@ -3,95 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helium - Términos y Privacidad</title>
+    <title>Helium | Términos y Privacidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a73e8;
-            --primary-dark: #0d47a1;
-            --secondary: #00bcd4;
-            --background: #121212;
-            --surface: #1e1e1e;
-            --on-background: #e1e1e1;
-            --on-surface: #ffffff;
-            --border: #333333;
-            --error: #cf6679;
+            --primary: #3a86ff;
+            --primary-light: rgba(58, 134, 255, 0.1);
+            --primary-dark: #2667cc;
+            --secondary: #00f5d4;
+            --accent: #8338ec;
+            --background: #0a0a0a;
+            --surface: #121212;
+            --surface-elevated: #1e1e1e;
+            --on-background: #f5f5f5;
+            --on-surface: #e0e0e0;
+            --border: rgba(255, 255, 255, 0.08);
+            --error: #ff5a5f;
+            --success: #06d6a0;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
             background-color: var(--background);
             color: var(--on-background);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
         
         header {
+            padding: 5rem 0 3rem;
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
         
-        h1 {
-            color: var(--secondary);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
         
         .subtitle {
             color: var(--on-surface);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.8;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         h2 {
-            color: var(--primary);
-            margin: 2rem 0 1rem;
+            color: var(--on-surface);
+            margin: 3rem 0 1.5rem;
             font-size: 1.8rem;
+            font-weight: 600;
             position: relative;
-            padding-left: 1rem;
+            display: inline-block;
         }
         
-        h2::before {
+        h2::after {
             content: '';
             position: absolute;
+            bottom: -8px;
             left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            border-radius: 2px;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 3px;
         }
         
         h3 {
-            color: var(--secondary);
-            margin: 1.5rem 0 0.8rem;
+            color: var(--primary);
+            margin: 2.5rem 0 1rem;
             font-size: 1.4rem;
+            font-weight: 500;
         }
         
         p, li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
             color: var(--on-background);
+            opacity: 0.9;
         }
         
         a {
             color: var(--primary);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
         
         a:hover {
@@ -100,58 +129,108 @@
         }
         
         ul, ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
+            margin-left: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
         }
         
         .card {
             background-color: var(--surface);
-            border-radius: 8px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(58, 134, 255, 0.3);
         }
         
         .highlight {
-            background-color: rgba(26, 115, 232, 0.1);
-            padding: 1rem;
+            background-color: var(--primary-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
             border-left: 4px solid var(--primary);
-            margin: 1rem 0;
-            border-radius: 0 4px 4px 0;
+        }
+        
+        .highlight p {
+            margin-bottom: 0;
+            color: var(--on-surface);
         }
         
         .badge {
             display: inline-block;
-            padding: 0.25rem 0.5rem;
-            background-color: var(--primary-dark);
+            padding: 0.3rem 0.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
             margin-right: 0.5rem;
+            letter-spacing: 0.5px;
         }
         
         footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 6rem;
+            padding: 3rem 0;
             border-top: 1px solid var(--border);
-            color: var(--on-background);
+            color: var(--on-surface);
             opacity: 0.7;
             font-size: 0.9rem;
         }
         
+        .last-updated {
+            background-color: var(--surface);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border);
+        }
+        
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 0 1.5rem;
             }
             
-            h1 {
-                font-size: 2rem;
+            header {
+                padding: 3rem 0 2rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
             }
             
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+                margin: 2.5rem 0 1.2rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -159,104 +238,106 @@
 <body>
     <div class="container">
         <header>
-            <h1>Helium</h1>
+            <div class="logo">Helium</div>
             <p class="subtitle">Términos de Servicio y Política de Privacidad</p>
         </header>
         
-        <div class="card">
-            <h2>1. Términos de Servicio</h2>
+        <div class="section">
+            <h2>Términos de Servicio</h2>
             
-            <h3>1.1 Aceptación de los Términos</h3>
-            <p>Al utilizar el bot de Discord "Helium" (en adelante, "el Bot"), usted acepta cumplir con estos Términos de Servicio y nuestra Política de Privacidad. Si no está de acuerdo con estos términos, no debe utilizar el Bot.</p>
+            <div class="card">
+                <h3>1. Aceptación de los Términos</h3>
+                <p>Al utilizar el bot de Discord "Helium" (en adelante, "el Bot"), usted acepta cumplir con estos Términos de Servicio y nuestra Política de Privacidad. Si no está de acuerdo con estos términos, no debe utilizar el Bot.</p>
+                
+                <div class="highlight">
+                    <p>El uso continuado del Bot constituye aceptación de estos términos y cualquier actualización posterior.</p>
+                </div>
+            </div>
             
-            <h3>1.2 Uso Apropiado</h3>
-            <p>Usted acepta utilizar el Bot de manera legal y ética. Prohibido expresamente:</p>
-            <ul>
-                <li>Usar el Bot para actividades ilegales o fraudulentas</li>
-                <li>Intentar dañar, deshabilitar o sobrecargar el Bot</li>
-                <li>Utilizar el Bot para acosar, difamar o dañar a otros usuarios</li>
-                <li>Reverse engineering o intentar acceder al código fuente sin autorización</li>
-                <li>Usar el Bot para enviar spam o contenido malicioso</li>
-            </ul>
+            <div class="card">
+                <h3>2. Uso Apropiado</h3>
+                <p>Usted acepta utilizar el Bot de manera legal y ética. Prohibido expresamente:</p>
+                <ul>
+                    <li>Usar el Bot para actividades ilegales o fraudulentas</li>
+                    <li>Intentar dañar, deshabilitar o sobrecargar el Bot</li>
+                    <li>Utilizar el Bot para acosar, difamar o dañar a otros usuarios</li>
+                    <li>Reverse engineering o intentar acceder al código fuente sin autorización</li>
+                    <li>Usar el Bot para enviar spam o contenido malicioso</li>
+                </ul>
+            </div>
             
-            <h3>1.3 Disponibilidad del Servicio</h3>
-            <p>Nos esforzamos por mantener el Bot disponible 24/7, pero no garantizamos su disponibilidad continua. Podemos suspender o terminar el servicio en cualquier momento sin previo aviso.</p>
-            
-            <h3>1.4 Modificaciones</h3>
-            <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Se notificarán los cambios importantes a través de nuestro servidor de Discord o el sitio web oficial.</p>
-            
-            <div class="highlight">
-                <p><strong>Nota importante:</strong> El uso continuado del Bot después de cambios en los términos constituye aceptación de los mismos.</p>
+            <div class="card">
+                <h3>3. Modificaciones y Disponibilidad</h3>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones importantes serán comunicadas a través de nuestro servidor de Discord oficial.</p>
+                <p>El Bot se proporciona "tal cual" sin garantías de disponibilidad continua. Podemos suspender o terminar el servicio en cualquier momento sin previo aviso.</p>
             </div>
         </div>
         
-        <div class="card">
-            <h2>2. Política de Privacidad</h2>
+        <div class="section">
+            <h2>Política de Privacidad</h2>
             
-            <h3>2.1 Información que Recopilamos</h3>
-            <p>El Bot puede recopilar y almacenar la siguiente información:</p>
-            <ul>
-                <li><span class="badge">ID de usuario</span>Identificadores únicos de Discord</li>
-                <li><span class="badge">ID de servidor</span>Identificadores de servidores donde se usa el Bot</li>
-                <li><span class="badge">Datos de configuración</span>Preferencias y configuraciones específicas del servidor/usuario</li>
-                <li><span class="badge">Datos de interacción</span>Comandos utilizados y timestamp de interacciones</li>
-            </ul>
+            <div class="card">
+                <h3>1. Información Recopilada</h3>
+                <p>Helium recopila únicamente la información necesaria para su funcionamiento:</p>
+                <ul>
+                    <li><span class="badge">Esencial</span>ID de usuario y servidor de Discord</li>
+                    <li><span class="badge">Funcional</span>Configuraciones y preferencias del bot</li>
+                    <li><span class="badge">Analítico</span>Comandos utilizados (sin contenido de mensajes)</li>
+                    <li><span class="badge">Técnico</span>Timestamp de interacciones</li>
+                </ul>
+            </div>
             
-            <h3>2.2 Uso de la Información</h3>
-            <p>Utilizamos la información recopilada para:</p>
-            <ul>
-                <li>Proveer y mejorar los servicios del Bot</li>
-                <li>Personalizar la experiencia del usuario</li>
-                <li>Mantener la seguridad y prevenir abusos</li>
-                <li>Generar estadísticas agregadas (no personales)</li>
-            </ul>
+            <div class="card">
+                <h3>2. Uso de Datos</h3>
+                <p>Sus datos se utilizan exclusivamente para:</p>
+                <ul>
+                    <li>Proveer y mejorar los servicios del Bot</li>
+                    <li>Personalizar la experiencia del usuario</li>
+                    <li>Mantener la seguridad y prevenir abusos</li>
+                    <li>Generar estadísticas agregadas anónimas</li>
+                </ul>
+                
+                <div class="highlight">
+                    <p>Nunca vendemos ni compartimos datos personales con terceros con fines comerciales.</p>
+                </div>
+            </div>
             
-            <h3>2.3 Compartir Información</h3>
-            <p>No vendemos ni compartimos información personal con terceros, excepto:</p>
-            <ul>
-                <li>Cuando sea requerido por ley</li>
-                <li>Para proteger nuestros derechos o seguridad</li>
-                <li>Con proveedores de servicios que nos ayudan a operar el Bot (sujetos a acuerdos de confidencialidad)</li>
-            </ul>
-            
-            <h3>2.4 Seguridad de los Datos</h3>
-            <p>Implementamos medidas de seguridad razonables para proteger la información recopilada. Sin embargo, ningún sistema es 100% seguro y no podemos garantizar seguridad absoluta.</p>
-            
-            <h3>2.5 Derechos de los Usuarios</h3>
-            <p>Usted tiene derecho a:</p>
-            <ul>
-                <li>Solicitar acceso a sus datos personales</li>
-                <li>Pedir corrección o eliminación de datos</li>
-                <li>Retirar el consentimiento para el procesamiento de datos</li>
-            </ul>
-            <p>Para ejercer estos derechos, contacte a través de nuestro servidor de Discord oficial.</p>
-            
-            <div class="highlight">
-                <p><strong>Edad mínima:</strong> El Bot no está dirigido a menores de 13 años. No recopilamos conscientemente información de menores de 13 años.</p>
+            <div class="card">
+                <h3>3. Seguridad y Derechos</h3>
+                <p>Implementamos medidas de seguridad avanzadas para proteger su información:</p>
+                <ul>
+                    <li>Cifrado de datos sensibles</li>
+                    <li>Acceso restringido</li>
+                    <li>Revisiones periódicas de seguridad</li>
+                </ul>
+                <p>Usted tiene derecho a acceder, corregir o eliminar sus datos. Para ejercer estos derechos, contacte a través de nuestro servidor de soporte.</p>
             </div>
         </div>
         
-        <div class="card">
-            <h2>3. Limitación de Responsabilidad</h2>
-            <p>El Bot se proporciona "tal cual" sin garantías de ningún tipo. No seremos responsables por daños directos, indirectos, incidentales o consecuentes resultantes del uso o incapacidad de usar el Bot.</p>
+        <div class="section">
+            <h2>Limitaciones y Contacto</h2>
             
-            <h3>3.1 Enlaces a Terceros</h3>
-            <p>El Bot puede contener enlaces a sitios o servicios de terceros. No controlamos ni somos responsables por el contenido o prácticas de privacidad de estos sitios.</p>
+            <div class="card">
+                <h3>Responsabilidad</h3>
+                <p>No somos responsables por:</p>
+                <ul>
+                    <li>Daños indirectos o consecuentes por el uso del Bot</li>
+                    <li>Contenido o prácticas de sitios enlazados</li>
+                    <li>Interrupciones temporales del servicio</li>
+                </ul>
+            </div>
             
-            <h3>3.2 Cambios en el Bot</h3>
-            <p>Nos reservamos el derecho de modificar o discontinuar cualquier función del Bot en cualquier momento sin previo aviso.</p>
-        </div>
-        
-        <div class="card">
-            <h2>4. Contacto</h2>
-            <p>Para preguntas sobre estos Términos o la Política de Privacidad, únase a nuestro servidor de Discord oficial o contacte a:</p>
-            <ul>
-                <li>Email: <a href="mailto:contacto@ejemplo.com">contacto@ejemplo.com</a></li>
-                <li>Discord: <a href="https://discord.gg/tuinvitationserver" target="_blank">Servidor de Soporte</a></li>
-                <li>Sitio web: <a href="https://tusitio.com" target="_blank">https://tusitio.com</a></li>
-            </ul>
+            <div class="card">
+                <h3>Contacto</h3>
+                <p>Para preguntas sobre estos términos:</p>
+                <ul>
+                    <li>Servidor de Discord: <a href="https://discord.gg/tuinvitacion" target="_blank">discord.gg/helium</a></li>
+                    <li>Email: <a href="mailto:soporte@heliumbot.com">soporte@heliumbot.com</a></li>
+                    <li>Sitio web: <a href="https://heliumbot.com" target="_blank">heliumbot.com</a></li>
+                </ul>
+            </div>
             
-            <p><strong>Fecha de última actualización:</strong> 27 de mayo de 2025</p>
+            <div class="last-updated">Última actualización: 27 de mayo de 2025</div>
         </div>
         
         <footer>
